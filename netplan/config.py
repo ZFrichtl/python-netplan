@@ -31,7 +31,7 @@ class NetPlan(object):
     interface names to netplan.interface.* classes.
     """
 
-    VERSION = "0.4.1"
+    VERSION = "0.5.0"
 
     def __init__(self, data):
         # type: (NetPlan, Dict[str, Any]) -> None
@@ -58,9 +58,7 @@ class NetPlan(object):
             by_section[cfg.section].append(iface)
 
         # Sort the interface names within each section
-        collected = [
-            f'{section}: {", ".join(sorted(data))}' for (section, data) in by_section.items()
-        ]
+        collected = [f'{section}: {", ".join(sorted(data))}' for (section, data) in by_section.items()]
 
         # Return a list sorted by section name
         return "; ".join(sorted(collected))
